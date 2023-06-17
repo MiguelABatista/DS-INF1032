@@ -20,7 +20,7 @@ def correlacionadores(estacao):
     return correlations
 
 estacoes = ["A601","A602","A603","A604","A606","A607","A608","A609","A610","A611","A618","A619","A620","A621","A624","A625","A626","A627","A628","A629","A630","A635","A636","A652","A659","A667"]
-
+colunas = ["precipitacao","pressao_atmosferica","radiacao","umidade_relativa","velocidade_media_vento"]
 df_correlacoes = pd.DataFrame(index=estacoes)
 
 for estacao in estacoes:
@@ -28,8 +28,22 @@ for estacao in estacoes:
     for coluna, correlacao in correlacoes.items():
         df_correlacoes.loc[estacao, coluna] = correlacao
 
+media_coluna = {}
+for coluna in colunas:
+    media_coluna[coluna] = df_correlacoes[coluna].mean()
+
+chaves_ordenadas = sorted(media_coluna, key=media_coluna.get)
+df_correlacoes = df_correlacoes.reindex(columns=chaves_ordenadas)
+
 df_correlacoes['MediaModuloCorrelacoes'] = df_correlacoes.abs().mean(axis=1)
+
+
+medias = df_correlacoes.mean()
+df_ordenado = df_correlacoes[medias.sort_values().index]
+
 df_correlacoes.reset_index(inplace=True)
 df_correlacoes.to_csv("correlacao_2.csv", index=False)
 
 print(df_correlacoes.head())
+
+
