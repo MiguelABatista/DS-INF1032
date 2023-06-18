@@ -9,7 +9,7 @@ def acumula(estacao):
     df_acumulado = pd.DataFrame()
     df_acumulado['data'] = df['data']
     for coluna in colunas:
-        df_acumulado[coluna] = df[coluna].rolling(window=100, min_periods=1).sum()
+        df_acumulado[coluna] = df[coluna].rolling(window=1, min_periods=1).sum()
     df_acumulado.to_csv("meteorologia\\acumulados\\"+estacao+".csv")
     print(estacao + " feita")
 
