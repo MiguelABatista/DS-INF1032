@@ -42,7 +42,7 @@ medias = df_correlacoes.mean()
 df_ordenado = df_correlacoes[medias.sort_values().index]
 
 df_correlacoes.reset_index(inplace=True)
-df_correlacoes.to_csv("correlacao_2.csv", index=False)
+df_correlacoes.to_csv("correlacionador\\correlacao_2.csv", index=False)
 
 print(df_correlacoes.head())
 
