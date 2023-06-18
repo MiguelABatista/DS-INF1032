@@ -3,7 +3,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Crie uma matriz de exemplo contendo números entre -1 e 1
-df = pd.read_csv("correlacionador\\correlacao_2.csv")
+df = pd.read_csv("correlacionador\\correlacao.csv")
 
 # Crie o mapa de calor usando seaborn
 df = df.drop(df.columns[0], axis=1)
