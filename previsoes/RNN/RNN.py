@@ -18,7 +18,8 @@ df_precos_alface.drop(columns=['preco','Unnamed: 0'], inplace = True)
 df_merged = pd.merge(df_meteorologia, df_precos_alface, on='data')
 df_merged['dias'] = (df_merged['data'] - pd.to_datetime('2015-01-01')).dt.days
 df_merged.drop(columns=['data'], inplace = True)
-print(df_merged.dtypes)
+
+
 # Dividir os dados em recursos (X) e alvo (y)
 X = df_merged.drop('preco_corrigido', axis=1).values
 y = df_merged['preco_corrigido'].values
