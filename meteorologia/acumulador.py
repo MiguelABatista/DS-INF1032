@@ -3,14 +3,13 @@ import pandas as pd
 
 def acumula(estacao):
     file_path ="meteorologia\\concatenados_diarios\\"+estacao+".CSV"
+    colunas = ['precipitacao', 'pressao_atmosferica', 'pressao_max', 'pressao_min', 'radiacao', 'temperatura_do_ar', 'temperatura_orvalho', 'temperatura_max', 'temperatura_min', 'temperatura_orvalho_max', 'temperatura_orvalho_min', 'umidade_max', 'umidade_min', 'umidade_relativa', 'direcao_vento', 'rajada_max', 'velocidade_media_vento']
+
     df = pd.read_csv(file_path, encoding = "Latin-1", delimiter = ",")
     df_acumulado = pd.DataFrame()
     df_acumulado['data'] = df['data']
-    df_acumulado['precipitacao'] = df['precipitacao'].rolling(window=130, min_periods=1).sum()
-    df_acumulado['pressao_atmosferica'] = df['pressao_atmosferica'].rolling(window=130, min_periods=1).sum()
-    df_acumulado['radiacao'] = df['radiacao'].rolling(window=130, min_periods=1).sum()
-    df_acumulado['umidade_relativa'] = df['umidade_relativa'].rolling(window=130, min_periods=1).sum()
-    df_acumulado['velocidade_media_vento'] = df['velocidade_media_vento'].rolling(window=130, min_periods=1).sum()
+    for coluna in colunas:
+        df_acumulado[coluna] = df[coluna].rolling(window=100, min_periods=1).sum()
     df_acumulado.to_csv("meteorologia\\acumulados\\"+estacao+".csv")
     print(estacao + " feita")
 

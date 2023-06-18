@@ -2,7 +2,7 @@ import pandas as pd
 from scipy.stats import spearmanr
 
 def correlacionadores(estacao):
-    colunas = ["precipitacao","pressao_atmosferica","radiacao","umidade_relativa","velocidade_media_vento"]
+    colunas = ['precipitacao', 'pressao_atmosferica', 'pressao_max', 'pressao_min', 'radiacao', 'temperatura_do_ar', 'temperatura_orvalho', 'temperatura_max', 'temperatura_min', 'temperatura_orvalho_max', 'temperatura_orvalho_min', 'umidade_max', 'umidade_min', 'umidade_relativa', 'direcao_vento', 'rajada_max', 'velocidade_media_vento']
     meteorologia_path = 'meteorologia\\acumulados\\'+estacao+'.csv'
     preco_alface_path = 'alface\\alface_corrigido.csv'
     df_meteorologia = pd.read_csv(meteorologia_path, encoding = "Latin-1", delimiter = ",")
@@ -20,7 +20,7 @@ def correlacionadores(estacao):
     return correlations
 
 estacoes = ["A601","A602","A603","A604","A606","A607","A608","A609","A610","A611","A618","A619","A620","A621","A624","A625","A626","A627","A628","A629","A630","A635","A636","A652","A659","A667"]
-colunas = ["precipitacao","pressao_atmosferica","radiacao","umidade_relativa","velocidade_media_vento"]
+colunas = ['precipitacao', 'pressao_atmosferica', 'pressao_max', 'pressao_min', 'radiacao', 'temperatura_do_ar', 'temperatura_orvalho', 'temperatura_max', 'temperatura_min', 'temperatura_orvalho_max', 'temperatura_orvalho_min', 'umidade_max', 'umidade_min', 'umidade_relativa', 'direcao_vento', 'rajada_max', 'velocidade_media_vento']
 df_correlacoes = pd.DataFrame(index=estacoes)
 
 for estacao in estacoes:
