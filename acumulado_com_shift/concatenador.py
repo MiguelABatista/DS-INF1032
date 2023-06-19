@@ -15,4 +15,4 @@ for filename in os.listdir(directory):
 
         all_data = pd.concat([df, all_data])
 
-all_data.to_csv(r'C:\Users\thoma\OneDrive\Documentos\GitHub\DS-INF1032\acumulado_com_shift\concatenado.csv')
+all_data.to_pickle(r'C:\Users\thoma\OneDrive\Documentos\GitHub\DS-INF1032\acumulado_com_shift\concatenado.zip')
